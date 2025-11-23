@@ -1,61 +1,129 @@
     <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact & devis</h2>
-          <p>Expliquez-nous votre projet, nous reviendrons vers vous rapidement avec une proposition adaptée.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & devis – L.F.B – Les Frères Bâtisseurs</title>
+  <link rel="icon" type="image/jpeg" href="logo-lfb.jpeg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- EN-TÊTE -->
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <img src="logo-lfb.jpeg" alt="Logo L.F.B – Les Frères Bâtisseurs" class="logo-img" />
+          <span>L.F.B – Les Frères Bâtisseurs</span>
         </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="realisations.html">Réalisations</a></li>
+            <li><a href="equipe.html">Notre équipe</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="contact.html" class="btn-nav">Contact / Devis</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-        <div class="contact-grid">
-          <div>
-            <form onsubmit="handleSubmit(event)">
-              <div>
-                <label for="name">Nom / Prénom</label>
-                <input type="text" id="name" name="name" placeholder="Votre nom" required />
-              </div>
-              <div>
-                <label for="email">Adresse e-mail</label>
-                <input type="email" id="email" name="email" placeholder="vous@email.com" required />
-              </div>
-              <div>
-                <label for="phone">Téléphone (optionnel)</label>
-                <input type="tel" id="phone" name="phone" placeholder="Votre numéro" />
-              </div>
-              <div>
-                <label for="message">Votre besoin</label>
-                <textarea id="message" name="message" placeholder="Décrivez votre projet : construction, électricité, panneaux solaires..." required></textarea>
-              </div>
-              <button class="btn-primary" type="submit">Envoyer ma demande</button>
-              <p id="form-message" style="font-size:0.85rem; color:#22c55e; margin-top:0.4rem; display:none;">
-                Merci ! Votre message est prêt à être envoyé (ce formulaire est une démo, pensez à le connecter à votre e-mail).
-              </p>
-            </form>
-          </div>
+  <!-- CONTENU CONTACT -->
+  <main>
+    <section class="container">
+      <div class="section-title">
+        <h1>Contact & demande de devis</h1>
+        <p>Expliquez-nous votre projet, nous reviendrons vers vous rapidement avec une proposition adaptée.</p>
+      </div>
 
-          <aside class="contact-info">
-            <h3>Nos coordonnées</h3>
-            <div class="contact-row">
-              <span class="contact-label">Localisation</span>
-              <span class="contact-value">Brazzaville – Interventions dans plusieurs villes du Congo</span>
+      <div class="contact-grid">
+        <div>
+          <form onsubmit="handleSubmit(event)">
+            <div>
+              <label for="name">Nom / Prénom</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required />
             </div>
-            <div class="contact-row">
-              <span class="contact-label">Téléphone</span>
-              <span class="contact-value">[Votre numéro de téléphone]</span>
+            <div>
+              <label for="email">Adresse e-mail</label>
+              <input type="email" id="email" name="email" placeholder="vous@email.com" required />
             </div>
-            <div class="contact-row">
-              <span class="contact-label">E-mail</span>
-              <span class="contact-value">lesfreresbatisseurs@gmail.com</span>
+            <div>
+              <label for="phone">Téléphone (optionnel)</label>
+              <input type="tel" id="phone" name="phone" placeholder="Votre numéro" />
             </div>
-            <div class="contact-row">
-              <span class="contact-label">Horaires</span>
-              <span class="contact-value">Du lundi au samedi, horaires à préciser</span>
+            <div>
+              <label for="message">Votre besoin</label>
+              <textarea id="message" name="message"
+                        placeholder="Décrivez votre projet : construction, électricité, panneaux solaires..." required></textarea>
             </div>
-            <p style="margin-top:0.8rem;">
-              Pour toute question ou demande de devis, vous pouvez nous contacter par e-mail ou par téléphone. Nous
-              étudierons votre projet et vous proposerons une solution adaptée à votre budget et à vos besoins.
+            <button class="btn-primary" type="submit">Envoyer ma demande</button>
+            <p id="form-message" style="font-size:0.85rem; color:#22c55e; margin-top:0.4rem; display:none;">
+              Merci ! Votre message est prêt à être envoyé (ce formulaire est une démo, pensez à le connecter à votre e-mail).
             </p>
-          </aside>
+          </form>
         </div>
+
+        <aside class="contact-info">
+          <h3>Nos coordonnées</h3>
+          <div class="contact-row">
+            <span class="contact-label">Localisation</span>
+            <span class="contact-value">Brazzaville – Interventions dans plusieurs villes du Congo</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Téléphone</span>
+            <span class="contact-value">[Votre numéro de téléphone]</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">E-mail</span>
+            <span class="contact-value">lesfreresbatisseurs@gmail.com</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Horaires</span>
+            <span class="contact-value">Du lundi au samedi, horaires à préciser</span>
+          </div>
+          <p style="margin-top:0.8rem;">
+            Vous pouvez nous contacter par e-mail, téléphone ou WhatsApp. Nous étudierons votre projet et vous proposerons
+            une solution adaptée à votre budget et à vos besoins.
+          </p>
+        </aside>
       </div>
     </section>
   </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> L.F.B – Les Frères Bâtisseurs – Tous droits réservés.</span>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="mentions.html">Mentions légales</a>
+        <a href="politique.html">Politique de confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Contact WhatsApp</div>
+    <a href="https://wa.me/VOTRE_NUMERO_WHATSAPP?text=Bonjour%20L.F.B%20!%20Je%20souhaite%20un%20devis."
+       target="_blank" aria-label="Nous contacter sur WhatsApp">
+      🟢
+    </a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById("form-message");
+      msg.style.display = "block";
+    }
+  </script>
+</body>
+</html>
+
