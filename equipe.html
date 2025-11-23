@@ -1,38 +1,98 @@
-    <!-- ÉQUIPE / POURQUOI NOUS CHOISIR -->
-    <section id="equipe">
-      <div class="container">
-        <div class="section-title">
-          <h2>Notre équipe & notre manière de travailler</h2>
-          <p>Des professionnels engagés pour la réussite de vos projets.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notre équipe – L.F.B – Les Frères Bâtisseurs</title>
+  <link rel="icon" type="image/jpeg" href="logo-lfb.jpeg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- EN-TÊTE -->
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <img src="logo-lfb.jpeg" alt="Logo L.F.B – Les Frères Bâtisseurs" class="logo-img" />
+          <span>L.F.B – Les Frères Bâtisseurs</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="realisations.html">Réalisations</a></li>
+            <li><a href="equipe.html">Notre équipe</a></li>
+            <li><a href="avis.html">Avis</a></li>
+            <li><a href="contact.html" class="btn-nav">Contact / Devis</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENU ÉQUIPE -->
+  <main>
+    <section class="container">
+      <div class="section-title">
+        <h1>Notre équipe & notre manière de travailler</h1>
+        <p>Des professionnels engagés pour la réussite de vos projets.</p>
+      </div>
+
+      <div class="equipe-grid">
+        <div class="card">
+          <h2 style="margin-bottom:0.7rem;">Pourquoi nous choisir ?</h2>
+          <ul class="why-list">
+            <li>Nous travaillons comme un partenaire de confiance, pas seulement comme un prestataire.</li>
+            <li>Nous analysons votre besoin avant de proposer une solution technique.</li>
+            <li>Nous privilégions la sécurité et la durabilité sur tous nos chantiers.</li>
+            <li>Nous restons disponibles après les travaux pour le suivi et la maintenance.</li>
+            <li>Nous connaissons les réalités du terrain au Congo et adaptons nos solutions.</li>
+          </ul>
         </div>
 
-        <div class="equipe-grid">
-          <div class="card">
-            <h3>Pourquoi nous choisir&nbsp;?</h3>
-            <ul class="why-list">
-              <li>Nous travaillons comme un partenaire de confiance, pas seulement comme un prestataire.</li>
-              <li>Nous analysons votre besoin avant de proposer une solution technique.</li>
-              <li>Nous privilégions la sécurité et la durabilité sur tous nos chantiers.</li>
-              <li>Nous restons disponibles après les travaux pour le suivi et la maintenance.</li>
-              <li>Nous connaissons les réalités du terrain au Congo et adaptons nos solutions.</li>
-            </ul>
-          </div>
-
-          <div class="card team-card">
-            <h3>Une équipe à votre écoute</h3>
-            <p class="team-line">
-              L.F.B – Les Frères Bâtisseurs est composée de professionnels de la construction, de l’électricité et de
-              l’énergie solaire qui travaillent ensemble sur vos projets.
-            </p>
-            <p class="team-line">
-              Nous intervenons sur des chantiers de tailles variées : maisons individuelles, immeubles, boutiques,
-              locaux professionnels, bâtiments techniques, etc.
-            </p>
-            <p class="team-line">
-              Notre objectif est simple&nbsp;: vous proposer un accompagnement sérieux, disponible et transparent, pour
-              que votre projet se déroule dans les meilleures conditions possibles.
-            </p>
-          </div>
+        <div class="card">
+          <h2 style="margin-bottom:0.7rem;">Une équipe à votre écoute</h2>
+          <p class="team-line">
+            L.F.B – Les Frères Bâtisseurs est composée de professionnels de la construction, de l’électricité et de
+            l’énergie solaire qui travaillent ensemble pour garantir la qualité de vos projets.
+          </p>
+          <p class="team-line">
+            Nous intervenons sur des chantiers de tailles variées : maisons individuelles, immeubles, boutiques,
+            locaux professionnels, bâtiments techniques, etc.
+          </p>
+          <p class="team-line">
+            Notre priorité : vous offrir un accompagnement sérieux, disponible et transparent, avec des échanges
+            clairs à chaque étape du projet.
+          </p>
         </div>
       </div>
     </section>
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> L.F.B – Les Frères Bâtisseurs – Tous droits réservés.</span>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="mentions.html">Mentions légales</a>
+        <a href="politique.html">Politique de confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP -->
+  <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Contact WhatsApp</div>
+    <a href="https://wa.me/VOTRE_NUMERO_WHATSAPP?text=Bonjour%20L.F.B%20!%20Je%20souhaite%20un%20devis."
+       target="_blank" aria-label="Nous contacter sur WhatsApp">
+      🟢
+    </a>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
