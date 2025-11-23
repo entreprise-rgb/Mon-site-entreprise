@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L.F.B – Les Frères Bâtisseurs | Construction & Électricité</title>
+  <style>
+    /* ---------- RESET SIMPLE ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f5f7;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ---------- LAYOUT GLOBAL ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .logo-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    nav li a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #f97316;
+      transition: width 0.2s ease;
+    }
+
+    nav li a:hover::after {
+      width: 100%;
+    }
+
+    .btn-nav {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #f97316;
+      background: #f97316;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+      background: #ea580c;
+    }
+
+    /* ---------- SECTION HERO ---------- */
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 0.75rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p.lead {
+      font-size: 0.98rem;
+      color: #4b5563;
+      margin-bottom: 1.4rem;
+      max-width: 36rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f97316, #f59e0b);
+      color: white;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(249, 115, 22, 0.35);
+      filter: brightness(1.02);
+    }
+
+    .btn-outline {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #111827;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn-outline:hover {
+      background: #f3f4f6;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .hero-meta-item span {
+      display: block;
+    }
+
+    .hero-meta-item strong {
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 1.4rem;
+      padding: 1.4rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .hero-card-line {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .hero-stat {
+      background: #f9fafb;
+      border-radius: 0.9rem;
+      padding: 0.6rem;
+      text-align: left;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .hero-stat span {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    /* ---------- SECTION À PROPOS ---------- */
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.3rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title p {
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1.3rem;
+      padding: 1.5rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+    }
+
+    .about-text p {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.4rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .about-list li::before {
+      content: "•";
+      color: #f97316;
+      font-size: 1rem;
+      margin-top: 0.08rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .about-highlights div {
+      background: #fff7ed;
+      border-radius: 0.9rem;
+      padding: 0.8rem;
+      font-size: 0.85rem;
+      color: #7c2d12;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 1.3rem;
+      padding: 1.4rem;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+    }
+
+    .service-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #fef3c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    /* ---------- TEMOIGNAGES ---------- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 1.3rem;
+      padding: 1.3rem;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.07);
+      font-size: 0.9rem;
+      color: #4b5563;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: "“";
+      position: absolute;
+      top: -18px;
+      left: 14px;
+      font-size: 2.4rem;
+      color: #fed7aa;
+      z-index: -1;
+    }
+
+    .testimonial-author {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.7rem;
+      align-items: start;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #111827;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.7rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      background: white;
+      transition: border 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #f97316;
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-info {
+      background: white;
+      border-radius: 1.3rem;
+      padding: 1.3rem;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .contact-info h3 {
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-row {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #111827;
+      display: block;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 1.5rem 0 2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      background: #f9fafb;
+      margin-top: 2rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav ul {
+        display: none; /* Version simple : nav cachée sur mobile */
+      }
+
+      .hero {
+        padding-top: 2.3rem;
+      }
+
+      .services-grid,
+      .testimonials-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <div class="logo-circle"></div>
+          <span>L.F.B – Les Frères Bâtisseurs</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#temoignages">Avis clients</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="btn-nav" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demander un devis</button></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="accueil">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Construction, électricité & solaire au Congo</span>
+          </div>
+          <h1>Nous construisons, alimentons et sécurisons vos bâtiments.</h1>
+          <p class="lead">
+            L.F.B – Les Frères Bâtisseurs accompagne les particuliers et les entreprises dans plusieurs villes du Congo
+            pour leurs projets de construction de bâtiments, de travaux électriques et d’installations de panneaux
+            photovoltaïques, avec des solutions fiables, durables et adaptées à chaque besoin.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Demander un devis gratuit
+            </button>
+            <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+              Voir nos services
+            </button>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <strong>Clients particuliers & professionnels</strong>
+              <span>Des solutions pour tous vos projets.</span>
+            </div>
+            <div class="hero-meta-item">
+              <strong>Basés à Brazzaville</strong>
+              <span>Interventions dans plusieurs villes du Congo.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Pourquoi choisir L.F.B&nbsp;?</h3>
+          <div class="hero-pill-row">
+            <span class="pill">Construction de bâtiments</span>
+            <span class="pill">Travaux électriques</span>
+            <span class="pill">Panneaux photovoltaïques</span>
+            <span class="pill">Maintenance</span>
+          </div>
+          <p class="hero-card-line">
+            ✅ Une équipe sérieuse et disponible pour vos projets de A à Z.
+          </p>
+          <p class="hero-card-line">
+            ✅ Des travaux réalisés avec soin pour la sécurité et la durabilité de vos installations.
+          </p>
+          <p class="hero-card-line">
+            ✅ Des solutions adaptées à votre budget et à vos besoins sur le terrain.
+          </p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>Construction</strong>
+              <span>Bâtiments, maisons, locaux professionnels.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Électricité</strong>
+              <span>Installation & mise en conformité.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Solaire</strong>
+              <span>Panneaux photovoltaïques & autonomie énergétique.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="apropos">
+      <div class="container">
+        <div class="section-title">
+          <h2>À propos de L.F.B – Les Frères Bâtisseurs</h2>
+          <p>Un partenaire de confiance pour vos projets de construction, d’électricité et d’énergie solaire au Congo.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-text card">
+            <p>
+              Basée à Brazzaville, L.F.B – Les Frères Bâtisseurs intervient dans plusieurs villes du Congo pour
+              accompagner les particuliers, les entreprises et les organisations dans leurs projets de construction et
+              d’installations électriques.
+            </p>
+            <p>
+              Nous réalisons vos chantiers avec sérieux, en respectant les normes, les délais et votre budget afin de
+              garantir la sécurité et la durabilité de vos bâtiments et équipements.
+            </p>
+            <ul class="about-list">
+              <li>Construction de bâtiments (maisons, immeubles, locaux professionnels).</li>
+              <li>Travaux d’électricité générale et maintenance des équipements électriques.</li>
+              <li>Installation de panneaux photovoltaïques pour réduire vos factures d’énergie.</li>
+            </ul>
+            <div class="about-highlights">
+              <div>
+                <strong>Accompagnement complet</strong><br />
+                Du devis au suivi après travaux, nous restons disponibles pour vous conseiller.
+              </div>
+              <div>
+                <strong>Fiabilité & sérieux</strong><br />
+                Des équipes engagées pour un travail propre et conforme aux exigences du terrain.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Nos engagements</h3>
+            <p>
+              Avec L.F.B – Les Frères Bâtisseurs, vous choisissez une entreprise qui place la qualité et la confiance au
+              cœur de chaque projet.
+            </p>
+            <ul class="about-list">
+              <li><strong>Transparence&nbsp;:</strong> des devis clairs et expliqués, sans frais cachés.</li>
+              <li><strong>Écoute&nbsp;:</strong> nous prenons en compte vos besoins et les réalités du terrain.</li>
+              <li><strong>Durabilité&nbsp;:</strong> des solutions pensées pour durer dans le temps, notamment en solaire.</li>
+            </ul>
+            <p style="margin-top: 0.9rem;">
+              Que ce soit pour une construction neuve, une rénovation, une installation électrique ou un projet
+              photovoltaïque, L.F.B – Les Frères Bâtisseurs est à vos côtés pour vous proposer des solutions fiables,
+              durables et adaptées à chaque besoin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos services</h2>
+          <p>Des solutions complètes pour vos bâtiments, vos équipements électriques et vos projets solaires.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">🏗️</div>
+            <h3>Construction de bâtiments</h3>
+            <p>
+              Construction de maisons, immeubles, boutiques, bureaux et locaux professionnels, avec une attention
+              particulière portée à la solidité, à la sécurité et à la finition des travaux.
+            </p>
+            <span class="service-tag">Bâtiments & structures</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💡</div>
+            <h3>Travaux électriques & maintenance</h3>
+            <p>
+              Installation et rénovation des réseaux électriques, mise en sécurité des installations, dépannage et
+              maintenance des équipements électriques pour particuliers et entreprises.
+            </p>
+            <span class="service-tag">Électricité & sécurité</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">☀️</div>
+            <h3>Installation de panneaux photovoltaïques</h3>
+            <p>
+              Étude, fourniture et installation de panneaux solaires pour réduire vos factures, sécuriser votre
+              alimentation électrique et favoriser les énergies renouvelables.
+            </p>
+            <span class="service-tag">Énergie solaire</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMOIGNAGES -->
+    <section id="temoignages">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ils nous font confiance</h2>
+          <p>Quelques exemples de la satisfaction de nos clients.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            L.F.B a réalisé la construction et l’installation électrique de notre bâtiment avec sérieux et professionnalisme.
+            Les délais ont été respectés et le résultat est à la hauteur de nos attentes.
+            <div class="testimonial-author">Client entreprise</div>
+            <div class="testimonial-role">Construction & électricité</div>
+          </div>
+          <div class="testimonial-card">
+            Très bonne équipe, à l’écoute et réactive. Les travaux électriques ont été bien expliqués et sécurisés. Nous
+            recommandons leurs services.
+            <div class="testimonial-author">Client particulier</div>
+            <div class="testimonial-role">Travaux électriques</div>
+          </div>
+          <div class="testimonial-card">
+            L’installation de nos panneaux photovoltaïques s’est très bien passée. Nous voyons déjà la différence sur nos
+            factures. Merci à L.F.B pour l’accompagnement.
+            <div class="testimonial-author">Client professionnel</div>
+            <div class="testimonial-role">Panneaux solaires</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact & devis</h2>
+          <p>Expliquez-nous votre projet, nous reviendrons vers vous rapidement avec une proposition adaptée.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <form onsubmit="handleSubmit(event)">
+              <div>
+                <label for="name">Nom / Prénom</label>
+                <input type="text" id="name" name="name" placeholder="Votre nom" required />
+              </div>
+              <div>
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" placeholder="vous@email.com" required />
+              </div>
+              <div>
+                <label for="phone">Téléphone (optionnel)</label>
+                <input type="tel" id="phone" name="phone" placeholder="Votre numéro" />
+              </div>
+              <div>
+                <label for="message">Votre besoin</label>
+                <textarea id="message" name="message" placeholder="Décrivez votre projet : construction, électricité, panneaux solaires..." required></textarea>
+              </div>
+              <button class="btn-primary" type="submit">Envoyer ma demande</button>
+              <p id="form-message" style="font-size:0.85rem; color:#16a34a; margin-top:0.4rem; display:none;">
+                Merci ! Votre message est prêt à être envoyé (ce formulaire est une démo, pensez à le connecter à votre e-mail).
+              </p>
+            </form>
+          </div>
+
+          <aside class="contact-info">
+            <h3>Nos coordonnées</h3>
+            <div class="contact-row">
+              <span class="contact-label">Localisation</span>
+              <span class="contact-value">Brazzaville – Interventions dans plusieurs villes du Congo</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">Téléphone</span>
+              <span class="contact-value">[Votre numéro de téléphone]</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">E-mail</span>
+              <span class="contact-value">lesfreresbatisseurs@gmail.com</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-label">Horaires</span>
+              <span class="contact-value">Du lundi au samedi, horaires à préciser</span>
+            </div>
+            <p style="margin-top:0.8rem;">
+              Pour toute question ou demande de devis, vous pouvez nous contacter par e-mail ou par téléphone. Nous
+              étudierons votre projet et vous proposerons une solution adaptée à votre budget et à vos besoins.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year"></span> L.F.B – Les Frères Bâtisseurs – Tous droits réservés.</span>
+      <div class="footer-links">
+        <a href="#accueil">Haut de page</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Affiche l'année en cours dans le footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Message de démo pour le formulaire
+    function handleSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById("form-message");
+      msg.style.display = "block";
+    }
+  </script>
+</body>
+</html>
